@@ -26,7 +26,7 @@ def _cmd_fuzz(args: argparse.Namespace) -> int:
     write_outputs(
         matrix,
         out / "matrix.json",
-        [out / "matrix.html", site / "index.html"],
+        [out / "matrix.html", site / "matrix.html"],
     )
     print(
         json.dumps(

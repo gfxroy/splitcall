@@ -1,7 +1,7 @@
 # splitcall
 
 - Repo: https://github.com/gfxroy/splitcall
-- Pages: https://gfxroy.github.io/splitcall/ (HTTP 200, body matches `site/index.html` from the full fuzz run)
+- Pages: https://gfxroy.github.io/splitcall/ — the front page checks a pasted sample in the browser. The published matrix is the second tab (`site/matrix.html`).
 - CI on `main`: success (pytest). Pages workflow: success after Pages was enabled with `build_type=workflow` and the first deploy was re-run.
 
 ## What shipped

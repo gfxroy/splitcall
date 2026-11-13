@@ -4,90 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>splitcall</title>
-<style>
-  :root { color-scheme: light; }
-  html { background: #fff; color: #111; }
-  body {
-    margin: 0 auto;
-    max-width: 1120px;
-    padding: 56px 24px 96px;
-    font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
-    font-size: 18px;
-    line-height: 1.45;
-  }
-  h1 { font-weight: 500; font-size: 48px; letter-spacing: -0.03em; margin: 0 0 8px; }
-  h2 { font-weight: 500; font-size: 26px; margin: 48px 0 12px; }
-  h3 { font-weight: 500; font-size: 18px; margin: 0 0 4px; font-family: ui-monospace, Menlo, Consolas, monospace; }
-  p { margin: 0 0 12px; }
-  a { color: #111; }
-  .dek { max-width: 40em; }
-  .meta { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
-  table { border-collapse: collapse; width: 100%; font-size: 12px; margin: 12px 0 8px; }
-  th, td {
-    border: 1px solid #111;
-    padding: 6px 8px;
-    text-align: left;
-    vertical-align: top;
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-weight: 400;
-  }
-  td.fail { background: #111; color: #fff; }
-  td.gap { background: #fff; color: #333; }
-  td.pass { background: #fff; }
-  td.skip { background: #fff; color: #888; }
-  article { border-top: 1px solid #111; padding: 16px 0; }
-  pre {
-    font-family: ui-monospace, Menlo, Consolas, monospace;
-    font-size: 13px;
-    white-space: pre-wrap;
-    word-break: break-word;
-    background: #111;
-    color: #fff;
-    padding: 12px 14px;
-    margin: 8px 0;
-  }
-  .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
-  ul { padding-left: 1.2em; }
-  footer { margin-top: 48px; font-size: 14px; }
-</style>
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
 <header>
   <h1>splitcall</h1>
-  <p class="dek">Chunk-boundary fuzzer for streaming tool-call parsers. Each cell is one runtime parser against one wire format. A black cell has at least one failed check. Gaps are fields the parser class never emits.</p>
-  <p class="meta">50 cases · 24237 splits · 3.895s · splitcall 0.1.0</p>
+  <p class="dek">Paste a model’s tool-call output. This page repairs a cut-off call and checks whether splitting the text into pieces changes the read. Nothing is uploaded.</p>
 </header>
-<h2>Formats</h2>
-<table>
-  <thead><tr><th>parser</th><th>hermes</th><th>qwen</th><th>mistral</th><th>llama</th><th>harmony</th></tr></thead>
-  <tbody>
-    <tr><th>vllm-hermes</th><td class="fail">2043 fail</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>vllm-qwen3</th><td class="skip">—</td><td class="fail">409 fail</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>vllm-llama</th><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td><td class="fail">1342 fail</td><td class="skip">—</td></tr><tr><th>vllm-mistral-prev11</th><td class="skip">—</td><td class="skip">—</td><td class="fail">1110 fail</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>vllm-mistral-v11</th><td class="skip">—</td><td class="skip">—</td><td class="fail">576 fail</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>sglang-hermes</th><td class="fail">4506 fail</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>sglang-qwen3</th><td class="skip">—</td><td class="fail">1020 fail</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>sglang-mistral</th><td class="skip">—</td><td class="skip">—</td><td class="fail">2666 fail</td><td class="skip">—</td><td class="skip">—</td></tr><tr><th>sglang-llama32</th><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td><td class="fail">3310 fail</td><td class="skip">—</td></tr><tr><th>sglang-harmony</th><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td><td class="skip">—</td><td class="fail">1092 fail</td></tr><tr><th>splitcall-repair</th><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td></tr>
-  </tbody>
-</table>
-<h2>Invariants</h2>
-<table>
-  <thead><tr><th>parser</th><th>no_crash</th><th>stream_equals_batch</th><th>count</th><th>index_ordinal</th><th>index_stable</th><th>id_present</th><th>id_stable</th><th>args_json</th><th>finish_reason</th><th>no_markup_leak</th><th>type_function</th><th>args_are_strings</th><th>oracle_names</th><th>oracle_args</th><th>oracle_content</th></tr></thead>
-  <tbody>
-    <tr><th>vllm-hermes</th><td class="pass">ok</td><td class="fail">1000 fail</td><td class="fail">601 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">442 fail</td><td class="gap">ok · 1893 gap</td><td class="pass">ok</td><td class="pass">ok</td><td class="skip">—</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td></tr><tr><th>vllm-qwen3</th><td class="pass">ok</td><td class="fail">204 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">204 fail</td><td class="gap">ok · 1591 gap</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">1 fail</td></tr><tr><th>vllm-llama</th><td class="pass">ok</td><td class="fail">702 fail</td><td class="fail">408 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">231 fail</td><td class="gap">ok · 1403 gap</td><td class="pass">ok</td><td class="pass">ok</td><td class="skip">—</td><td class="fail">1 fail</td><td class="pass">ok</td><td class="skip">—</td></tr><tr><th>vllm-mistral-prev11</th><td class="pass">ok</td><td class="fail">518 fail</td><td class="fail">339 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">252 fail</td><td class="gap">ok · 888 gap</td><td class="pass">ok</td><td class="pass">ok</td><td class="skip">—</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">1 fail</td></tr><tr><th>vllm-mistral-v11</th><td class="pass">ok</td><td class="fail">243 fail</td><td class="fail">7 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">323 fail</td><td class="gap">ok · 658 gap</td><td class="pass">ok</td><td class="pass">ok</td><td class="skip">—</td><td class="fail">1 fail</td><td class="fail">1 fail</td><td class="fail">1 fail</td></tr><tr><th>sglang-hermes</th><td class="pass">ok</td><td class="fail">1863 fail</td><td class="fail">881 fail</td><td class="fail">876 fail</td><td class="pass">ok</td><td class="gap">ok · 1893 gap</td><td class="gap">ok · 1893 gap</td><td class="fail">886 fail</td><td class="gap">ok · 1893 gap</td><td class="pass">ok</td><td class="gap">ok · 1893 gap</td><td class="skip">—</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td></tr><tr><th>sglang-qwen3</th><td class="pass">ok</td><td class="fail">530 fail</td><td class="fail">61 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="gap">ok · 1591 gap</td><td class="gap">ok · 1591 gap</td><td class="fail">428 fail</td><td class="gap">ok · 1591 gap</td><td class="pass">ok</td><td class="gap">ok · 1591 gap</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">1 fail</td></tr><tr><th>sglang-mistral</th><td class="pass">ok</td><td class="fail">1064 fail</td><td class="fail">472 fail</td><td class="fail">663 fail</td><td class="pass">ok</td><td class="gap">ok · 1477 gap</td><td class="gap">ok · 1477 gap</td><td class="fail">432 fail</td><td class="gap">ok · 1477 gap</td><td class="fail">34 fail</td><td class="gap">ok · 1477 gap</td><td class="skip">—</td><td class="pass">ok</td><td class="pass">ok</td><td class="fail">1 fail</td></tr><tr><th>sglang-llama32</th><td class="pass">ok</td><td class="fail">1386 fail</td><td class="fail">482 fail</td><td class="fail">727 fail</td><td class="pass">ok</td><td class="gap">ok · 1403 gap</td><td class="gap">ok · 1403 gap</td><td class="fail">715 fail</td><td class="gap">ok · 1403 gap</td><td class="pass">ok</td><td class="gap">ok · 1403 gap</td><td class="skip">—</td><td class="pass">ok</td><td class="pass">ok</td><td class="skip">—</td></tr><tr><th>sglang-harmony</th><td class="pass">ok</td><td class="fail">785 fail</td><td class="fail">303 fail</td><td class="pass">ok</td><td class="pass">ok</td><td class="gap">ok · 2538 gap</td><td class="gap">ok · 2538 gap</td><td class="pass">ok</td><td class="gap">ok · 2538 gap</td><td class="pass">ok</td><td class="gap">ok · 2538 gap</td><td class="skip">—</td><td class="fail">2 fail</td><td class="fail">2 fail</td><td class="pass">ok</td></tr><tr><th>splitcall-repair</th><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td><td class="pass">ok</td></tr>
-  </tbody>
-</table>
-<h2>Minimal repros</h2>
-<article><h3>sglang-harmony · count</h3><p>harmony-basic · harmony · family chunks:1 · chunks:1 on the shrunk text</p><p>1 batch vs 0 stream</p><pre>&lt;|start|&gt;assistant&lt;|channel|&gt;commentaryto=fus.get_weather&lt;|constrain|&gt;json&lt;|message|&gt;{&quot;city&quot;: &quot;Paris&quot;}&lt;|call|&gt;</pre><p class="mono">batch finish=None content=&#x27;&#x27; calls=[0:get_weather:{&quot;city&quot;: &quot;Paris&quot;}]</p><p class="mono">stream finish=None content=&#x27;&lt;|start|&gt;assistant&lt;|channel|&gt;commenta...&#x27; calls=[]</p></article><article><h3>sglang-harmony · stream_equals_batch</h3><p>harmony-basic · harmony · family cut · cut@0 on the shrunk text</p><p>content &#x27;&lt;|call|&gt;&#x27; vs &#x27;&#x27;</p><pre>&lt;|call|&gt;</pre><p class="mono">batch finish=None content=&#x27;&lt;|call|&gt;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[]</p></article><article><h3>sglang-hermes · args_json</h3><p>hermes-basic · hermes · family cut · cut@0 on the shrunk text</p><p>stream[0] &#x27;&#x27;</p><pre>&lt;tool_call&gt;{&quot;name&quot;:&quot;get_weather&quot;</pre><p class="mono">batch finish=None content=&#x27;&lt;tool_call&gt;{&quot;name&quot;:&quot;get_weather&quot;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-hermes · count</h3><p>hermes-basic · hermes · family trunc · trunc@32 on the shrunk text</p><p>0 batch vs 1 stream</p><pre>&lt;tool_call&gt;{&quot;name&quot;:&quot;get_weather&quot;</pre><p class="mono">batch finish=None content=&#x27;&lt;tool_call&gt;{&quot;name&quot;:&quot;get_weather&quot;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-hermes · index_ordinal</h3><p>hermes-basic · hermes · family cut · cut@0 on the shrunk text</p><p>batch indices [1]</p><pre>&lt;tool_call&gt;{&quot;name&quot;:&quot;get_weather&quot;, &quot;&quot;: {&quot;cy&quot;: &quot;P&quot;}}&lt;/tool_call&gt;</pre><p class="mono">batch finish=None content=&#x27;&#x27; calls=[1:get_weather:{}]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-hermes · stream_equals_batch</h3><p>hermes-basic · hermes · family cut · cut@0 on the shrunk text</p><p>content &#x27;&lt;&#x27; vs &#x27;&#x27;</p><pre>&lt;</pre><p class="mono">batch finish=None content=&#x27;&lt;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[]</p></article><article><h3>sglang-llama32 · args_json</h3><p>llama-bare · llama · family cut · cut@0 on the shrunk text</p><p>stream[0] &#x27;&#x27;</p><pre>{&quot;name&quot;:&quot;get_weather&quot;</pre><p class="mono">batch finish=None content=&#x27;{&quot;name&quot;:&quot;get_weather&quot;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-llama32 · count</h3><p>llama-bare · llama · family trunc · trunc@21 on the shrunk text</p><p>0 batch vs 1 stream</p><pre>{&quot;name&quot;:&quot;get_weather&quot;</pre><p class="mono">batch finish=None content=&#x27;{&quot;name&quot;:&quot;get_weather&quot;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-llama32 · index_ordinal</h3><p>llama-bare · llama · family cut · cut@0 on the shrunk text</p><p>batch indices [1]</p><pre>{&quot;name&quot;:&quot;get_weather&quot;,&quot;&quot;:&quot;Pa&quot;}}</pre><p class="mono">batch finish=None content=&#x27;&#x27; calls=[1:get_weather:{}]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-llama32 · stream_equals_batch</h3><p>llama-bare · llama · family cut · cut@0 on the shrunk text</p><p>content &#x27;{&#x27; vs &#x27;&#x27;</p><pre>{</pre><p class="mono">batch finish=None content=&#x27;{&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[]</p></article><article><h3>sglang-mistral · args_json</h3><p>mistral-array · mistral · family cut · cut@35 on the shrunk text</p><p>stream[0] &#x27;&#x27;</p><pre>[TOOL_CALLS] [{&quot;name&quot;:&quot;get_weather&quot;&quot;a</pre><p class="mono">batch finish=None content=&#x27;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article><article><h3>sglang-mistral · count</h3><p>mistral-array · mistral · family trunc · trunc@35 on the shrunk text</p><p>0 batch vs 1 stream</p><pre>[TOOL_CALLS] [{&quot;name&quot;:&quot;get_weather&quot;&quot;a</pre><p class="mono">batch finish=None content=&#x27;&#x27; calls=[]</p><p class="mono">stream finish=None content=&#x27;&#x27; calls=[0:get_weather:]</p></article>
-<h2>Probe</h2>
-<pre>{
-  &quot;probe&quot;: &quot;vllm-mistral-prev11-engine&quot;,
-  &quot;text&quot;: &quot;[TOOL_CALLS] [{\&quot;name\&quot;: \&quot;get_weather\&quot;, \&quot;arguments\&quot;: {\&quot;city\&quot;: \&quot;Paris\&quot;}}]&quot;,
-  &quot;engine_tools_called&quot;: false,
-  &quot;engine_names&quot;: [],
-  &quot;legacy_tools_called&quot;: true,
-  &quot;legacy_names&quot;: [
-    &quot;get_weather&quot;
-  ]
-}</pre>
-<h2>Limits</h2>
-<ul><li>Splits are Unicode code points, not UTF-8 bytes.</li><li>Splits are not real tokenizer boundaries. A marker that is one special token in production is still cut apart here.</li><li>Corpus strings are hand-written from published wire formats, not live model samples.</li><li>vLLM and SGLang are the parser classes, not their HTTP serving layers. finish_reason and, for SGLang, tool-call ids are filled in by serving code that is not imported.</li><li>The vLLM GptOss tool parser is an upstream stub and is not in the matrix. Harmony is the SGLang detector.</li></ul>
+<nav class="tabs" role="tablist">
+  <button type="button" id="tab-check" role="tab" aria-selected="true" aria-controls="panel-check">Check an output</button>
+  <button type="button" id="tab-matrix" role="tab" aria-selected="false" aria-controls="panel-matrix">Results matrix</button>
+</nav>
+<section id="panel-check" role="tabpanel">
+  <form id="checker">
+    <label for="format">Format</label>
+    <select id="format" name="format">
+      <option value="hermes">Hermes — JSON inside &lt;tool_call&gt;</option>
+      <option value="qwen">Qwen — function and parameter tags</option>
+      <option value="mistral">Mistral — [TOOL_CALLS]</option>
+      <option value="llama">Llama — python tag or a JSON object</option>
+      <option value="harmony">Harmony — channel blocks</option>
+    </select>
+    <label for="example">Example</label>
+    <select id="example" name="example">
+      <option value="">I’ll paste my own</option>
+    </select>
+    <label for="sample">Model output</label>
+    <textarea id="sample" name="sample" spellcheck="false" placeholder="Paste the model’s tool-call output here."></textarea>
+    <button type="submit" class="primary" id="go" disabled>Check this output</button>
+    <p class="status" id="status" role="status">Loading the checker…</p>
+  </form>
+  <div id="error" class="error" hidden></div>
+  <div id="results" hidden></div>
+</section>
+<section id="panel-matrix" role="tabpanel" hidden>
+  <p class="dek">These cells are the published run against the vendored vLLM and SGLang parsers. A black cell has at least one failed check.</p>
+  <iframe class="matrix" id="matrix-frame" title="Published results matrix"></iframe>
+</section>
 <footer>
   <p><a href="https://github.com/gfxroy/splitcall">github.com/gfxroy/splitcall</a></p>
 </footer>
+<script src="app.js"></script>
 </body>
 </html>

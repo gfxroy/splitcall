@@ -4,7 +4,7 @@ Chunk-boundary fuzzer and repair parser for streaming tool calls.
 
 Live suites such as tool-eval-bench, K2-Vendor-Verifier, and willitcall talk to a running server. splitcall does not. It replays hand-written wire samples through the parser classes themselves, once as a whole buffer and again at every Unicode-code-point split and truncation, and checks the two results against each other and against a few OpenAI-shaped rules.
 
-The latest full run is committed in [`results/matrix.json`](results/matrix.json) and drawn at [gfxroy.github.io/splitcall](https://gfxroy.github.io/splitcall/).
+The latest full run is committed in [`results/matrix.json`](results/matrix.json). The Pages site at [gfxroy.github.io/splitcall](https://gfxroy.github.io/splitcall/) checks a pasted sample in the browser. The matrix from this run is the second tab.
 
 ## Install
 
@@ -21,7 +21,7 @@ splitcall list-corpus
 splitcall parse --format hermes '<tool_call>{"name": "get_weather", "arguments": {"city": "Paris"}}</tool_call>'
 ```
 
-`splitcall fuzz` writes `results/matrix.json`, `results/matrix.html`, and `site/index.html`. The process exits 0 when an upstream parser fails. `--strict` exits 1 only when `splitcall-repair` fails. `--quick` is a smoke subset. The numbers below are from a full run, not `--quick`.
+`splitcall fuzz` writes `results/matrix.json`, `results/matrix.html`, and `site/matrix.html`. The process exits 0 when an upstream parser fails. `--strict` exits 1 only when `splitcall-repair` fails. `--quick` is a smoke subset. The numbers below are from a full run, not `--quick`.
 
 ## What was run
 
@@ -152,7 +152,7 @@ The strings are written from published wire formats: Hermes JSON inside `<tool_c
 .venv/bin/python -m pytest -q
 ```
 
-CI is `.github/workflows/ci.yml` (Python 3.12, `pip install -e ".[dev]"`, `pytest -q`). GitHub Pages is `.github/workflows/pages.yml`, deploying the `site/` directory. The page is the matrix from this run, black and white, no second theme.
+CI is `.github/workflows/ci.yml` (Python 3.12, `pip install -e ".[dev]"`, `pytest -q`). GitHub Pages is `.github/workflows/pages.yml`, deploying the `site/` directory. The front page runs the repair parser and the chunk-split check in Pyodide. The matrix from this run is the second tab, black and white.
 
 ## License
 
