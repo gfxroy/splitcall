@@ -31,3 +31,5 @@ The 12 stored repros are all SGLang because the shrink slots are filled in parse
 ## Limits
 
 Splits are Unicode code points, not bytes or tokenizer boundaries. The corpus is hand-written, not live model output. Serving code that would assign `finish_reason` and SGLang ids is not imported. llama.cpp and Ollama are not included. The repair parser is scored against itself and the hand oracle, not against every upstream quirk.
+
+APP LIVE: https://gfxroy.github.io/splitcall/
