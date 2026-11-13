@@ -1,0 +1,7 @@
+splitcall
+Copyright (c) 2026 gfxroy
+
+This project includes parser source from vLLM and SGLang, unchanged, under
+src/splitcall/vendor_path/. Those files keep their Apache-2.0 license and
+copyright headers. See src/splitcall/vendor_path/LICENSE.Apache-2.0 and
+VENDORED.md. The splitcall code around them is MIT.

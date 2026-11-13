@@ -1,0 +1,1345 @@
+{
+  "tool": "splitcall",
+  "version": "0.1.0",
+  "elapsed_sec": 3.895,
+  "cases": 50,
+  "splits": 24237,
+  "parsers": [
+    "vllm-hermes",
+    "vllm-qwen3",
+    "vllm-llama",
+    "vllm-mistral-prev11",
+    "vllm-mistral-v11",
+    "sglang-hermes",
+    "sglang-qwen3",
+    "sglang-mistral",
+    "sglang-llama32",
+    "sglang-harmony",
+    "splitcall-repair"
+  ],
+  "formats": [
+    "hermes",
+    "qwen",
+    "mistral",
+    "llama",
+    "harmony"
+  ],
+  "cells": {
+    "vllm-hermes": {
+      "hermes": {
+        "pass": 13981,
+        "fail": 2043,
+        "gap": 1893,
+        "skip": 4832
+      }
+    },
+    "vllm-qwen3": {
+      "qwen": {
+        "pass": 15187,
+        "fail": 409,
+        "gap": 1591,
+        "skip": 1932
+      }
+    },
+    "vllm-llama": {
+      "llama": {
+        "pass": 9854,
+        "fail": 1342,
+        "gap": 1403,
+        "skip": 4264
+      }
+    },
+    "vllm-mistral-prev11": {
+      "mistral": {
+        "pass": 5847,
+        "fail": 1110,
+        "gap": 888,
+        "skip": 2829
+      }
+    },
+    "vllm-mistral-v11": {
+      "mistral": {
+        "pass": 5511,
+        "fail": 576,
+        "gap": 658,
+        "skip": 1169
+      }
+    },
+    "sglang-hermes": {
+      "hermes": {
+        "pass": 6909,
+        "fail": 4506,
+        "gap": 7572,
+        "skip": 3762
+      }
+    },
+    "sglang-qwen3": {
+      "qwen": {
+        "pass": 9958,
+        "fail": 1020,
+        "gap": 6364,
+        "skip": 1777
+      }
+    },
+    "sglang-mistral": {
+      "mistral": {
+        "pass": 5600,
+        "fail": 2666,
+        "gap": 5908,
+        "skip": 3583
+      }
+    },
+    "sglang-llama32": {
+      "llama": {
+        "pass": 5242,
+        "fail": 3310,
+        "gap": 5612,
+        "skip": 2699
+      }
+    },
+    "sglang-harmony": {
+      "harmony": {
+        "pass": 11251,
+        "fail": 1092,
+        "gap": 10152,
+        "skip": 7991
+      }
+    },
+    "splitcall-repair": {
+      "hermes": {
+        "pass": 16790,
+        "fail": 0,
+        "gap": 0,
+        "skip": 5959
+      },
+      "qwen": {
+        "pass": 16283,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2836
+      },
+      "mistral": {
+        "pass": 12542,
+        "fail": 0,
+        "gap": 0,
+        "skip": 5215
+      },
+      "llama": {
+        "pass": 12123,
+        "fail": 0,
+        "gap": 0,
+        "skip": 4740
+      },
+      "harmony": {
+        "pass": 21260,
+        "fail": 0,
+        "gap": 0,
+        "skip": 9226
+      }
+    }
+  },
+  "invariants": {
+    "vllm-hermes": {
+      "no_crash": {
+        "pass": 1893,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 893,
+        "fail": 1000,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 1292,
+        "fail": 601,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 1475,
+        "fail": 0,
+        "gap": 0,
+        "skip": 418
+      },
+      "index_stable": {
+        "pass": 1475,
+        "fail": 0,
+        "gap": 0,
+        "skip": 418
+      },
+      "id_present": {
+        "pass": 1475,
+        "fail": 0,
+        "gap": 0,
+        "skip": 418
+      },
+      "id_stable": {
+        "pass": 1475,
+        "fail": 0,
+        "gap": 0,
+        "skip": 418
+      },
+      "args_json": {
+        "pass": 1033,
+        "fail": 442,
+        "gap": 0,
+        "skip": 418
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1893,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 1475,
+        "fail": 0,
+        "gap": 0,
+        "skip": 418
+      },
+      "type_function": {
+        "pass": 1475,
+        "fail": 0,
+        "gap": 0,
+        "skip": 418
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1893
+      },
+      "oracle_names": {
+        "pass": 9,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_args": {
+        "pass": 9,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 2,
+        "fail": 0,
+        "gap": 0,
+        "skip": 9
+      }
+    },
+    "vllm-qwen3": {
+      "no_crash": {
+        "pass": 1591,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 1387,
+        "fail": 204,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 1591,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "index_stable": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "id_present": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "id_stable": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "args_json": {
+        "pass": 1147,
+        "fail": 204,
+        "gap": 0,
+        "skip": 240
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1591,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "type_function": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "args_are_strings": {
+        "pass": 1351,
+        "fail": 0,
+        "gap": 0,
+        "skip": 240
+      },
+      "oracle_names": {
+        "pass": 7,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_args": {
+        "pass": 7,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 1,
+        "gap": 0,
+        "skip": 8
+      }
+    },
+    "vllm-llama": {
+      "no_crash": {
+        "pass": 1403,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 701,
+        "fail": 702,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 995,
+        "fail": 408,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 996,
+        "fail": 0,
+        "gap": 0,
+        "skip": 407
+      },
+      "index_stable": {
+        "pass": 996,
+        "fail": 0,
+        "gap": 0,
+        "skip": 407
+      },
+      "id_present": {
+        "pass": 996,
+        "fail": 0,
+        "gap": 0,
+        "skip": 407
+      },
+      "id_stable": {
+        "pass": 996,
+        "fail": 0,
+        "gap": 0,
+        "skip": 407
+      },
+      "args_json": {
+        "pass": 765,
+        "fail": 231,
+        "gap": 0,
+        "skip": 407
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1403,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 996,
+        "fail": 0,
+        "gap": 0,
+        "skip": 407
+      },
+      "type_function": {
+        "pass": 996,
+        "fail": 0,
+        "gap": 0,
+        "skip": 407
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1403
+      },
+      "oracle_names": {
+        "pass": 7,
+        "fail": 1,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_args": {
+        "pass": 7,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 9
+      }
+    },
+    "vllm-mistral-prev11": {
+      "no_crash": {
+        "pass": 888,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 370,
+        "fail": 518,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 549,
+        "fail": 339,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 630,
+        "fail": 0,
+        "gap": 0,
+        "skip": 258
+      },
+      "index_stable": {
+        "pass": 566,
+        "fail": 0,
+        "gap": 0,
+        "skip": 322
+      },
+      "id_present": {
+        "pass": 630,
+        "fail": 0,
+        "gap": 0,
+        "skip": 258
+      },
+      "id_stable": {
+        "pass": 566,
+        "fail": 0,
+        "gap": 0,
+        "skip": 322
+      },
+      "args_json": {
+        "pass": 378,
+        "fail": 252,
+        "gap": 0,
+        "skip": 258
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 888,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 630,
+        "fail": 0,
+        "gap": 0,
+        "skip": 258
+      },
+      "type_function": {
+        "pass": 630,
+        "fail": 0,
+        "gap": 0,
+        "skip": 258
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 888
+      },
+      "oracle_names": {
+        "pass": 5,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_args": {
+        "pass": 5,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 1,
+        "gap": 0,
+        "skip": 5
+      }
+    },
+    "vllm-mistral-v11": {
+      "no_crash": {
+        "pass": 658,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 415,
+        "fail": 243,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 651,
+        "fail": 7,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 586,
+        "fail": 0,
+        "gap": 0,
+        "skip": 72
+      },
+      "index_stable": {
+        "pass": 586,
+        "fail": 0,
+        "gap": 0,
+        "skip": 72
+      },
+      "id_present": {
+        "pass": 586,
+        "fail": 0,
+        "gap": 0,
+        "skip": 72
+      },
+      "id_stable": {
+        "pass": 586,
+        "fail": 0,
+        "gap": 0,
+        "skip": 72
+      },
+      "args_json": {
+        "pass": 263,
+        "fail": 323,
+        "gap": 0,
+        "skip": 72
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 658,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 586,
+        "fail": 0,
+        "gap": 0,
+        "skip": 72
+      },
+      "type_function": {
+        "pass": 586,
+        "fail": 0,
+        "gap": 0,
+        "skip": 72
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 658
+      },
+      "oracle_names": {
+        "pass": 4,
+        "fail": 1,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_args": {
+        "pass": 4,
+        "fail": 1,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 1,
+        "gap": 0,
+        "skip": 5
+      }
+    },
+    "sglang-hermes": {
+      "no_crash": {
+        "pass": 1893,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 30,
+        "fail": 1863,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 1012,
+        "fail": 881,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 555,
+        "fail": 876,
+        "gap": 0,
+        "skip": 462
+      },
+      "index_stable": {
+        "pass": 1423,
+        "fail": 0,
+        "gap": 0,
+        "skip": 470
+      },
+      "id_present": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1893,
+        "skip": 0
+      },
+      "id_stable": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1893,
+        "skip": 0
+      },
+      "args_json": {
+        "pass": 545,
+        "fail": 886,
+        "gap": 0,
+        "skip": 462
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1893,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 1431,
+        "fail": 0,
+        "gap": 0,
+        "skip": 462
+      },
+      "type_function": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1893,
+        "skip": 0
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1893
+      },
+      "oracle_names": {
+        "pass": 9,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_args": {
+        "pass": 9,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 2,
+        "fail": 0,
+        "gap": 0,
+        "skip": 9
+      }
+    },
+    "sglang-qwen3": {
+      "no_crash": {
+        "pass": 1591,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 1061,
+        "fail": 530,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 1530,
+        "fail": 61,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 1238,
+        "fail": 0,
+        "gap": 0,
+        "skip": 353
+      },
+      "index_stable": {
+        "pass": 1238,
+        "fail": 0,
+        "gap": 0,
+        "skip": 353
+      },
+      "id_present": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1591,
+        "skip": 0
+      },
+      "id_stable": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1591,
+        "skip": 0
+      },
+      "args_json": {
+        "pass": 810,
+        "fail": 428,
+        "gap": 0,
+        "skip": 353
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1591,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 1238,
+        "fail": 0,
+        "gap": 0,
+        "skip": 353
+      },
+      "type_function": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1591,
+        "skip": 0
+      },
+      "args_are_strings": {
+        "pass": 1238,
+        "fail": 0,
+        "gap": 0,
+        "skip": 353
+      },
+      "oracle_names": {
+        "pass": 7,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_args": {
+        "pass": 7,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 1,
+        "gap": 0,
+        "skip": 8
+      }
+    },
+    "sglang-mistral": {
+      "no_crash": {
+        "pass": 1477,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 413,
+        "fail": 1064,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 1005,
+        "fail": 472,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 291,
+        "fail": 663,
+        "gap": 0,
+        "skip": 523
+      },
+      "index_stable": {
+        "pass": 954,
+        "fail": 0,
+        "gap": 0,
+        "skip": 523
+      },
+      "id_present": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1477,
+        "skip": 0
+      },
+      "id_stable": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1477,
+        "skip": 0
+      },
+      "args_json": {
+        "pass": 522,
+        "fail": 432,
+        "gap": 0,
+        "skip": 523
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1477,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 920,
+        "fail": 34,
+        "gap": 0,
+        "skip": 523
+      },
+      "type_function": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1477,
+        "skip": 0
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1477
+      },
+      "oracle_names": {
+        "pass": 9,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_args": {
+        "pass": 9,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 1,
+        "gap": 0,
+        "skip": 10
+      }
+    },
+    "sglang-llama32": {
+      "no_crash": {
+        "pass": 1403,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 17,
+        "fail": 1386,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 921,
+        "fail": 482,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 355,
+        "fail": 727,
+        "gap": 0,
+        "skip": 321
+      },
+      "index_stable": {
+        "pass": 1082,
+        "fail": 0,
+        "gap": 0,
+        "skip": 321
+      },
+      "id_present": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1403,
+        "skip": 0
+      },
+      "id_stable": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1403,
+        "skip": 0
+      },
+      "args_json": {
+        "pass": 367,
+        "fail": 715,
+        "gap": 0,
+        "skip": 321
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1403,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 1082,
+        "fail": 0,
+        "gap": 0,
+        "skip": 321
+      },
+      "type_function": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 1403,
+        "skip": 0
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1403
+      },
+      "oracle_names": {
+        "pass": 8,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_args": {
+        "pass": 7,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2
+      },
+      "oracle_content": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 9
+      }
+    },
+    "sglang-harmony": {
+      "no_crash": {
+        "pass": 2538,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 1753,
+        "fail": 785,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 2235,
+        "fail": 303,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 1208,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1330
+      },
+      "index_stable": {
+        "pass": 1085,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1453
+      },
+      "id_present": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 2538,
+        "skip": 0
+      },
+      "id_stable": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 2538,
+        "skip": 0
+      },
+      "args_json": {
+        "pass": 1208,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1330
+      },
+      "finish_reason": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 2538,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 1208,
+        "fail": 0,
+        "gap": 0,
+        "skip": 1330
+      },
+      "type_function": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 2538,
+        "skip": 0
+      },
+      "args_are_strings": {
+        "pass": 0,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2538
+      },
+      "oracle_names": {
+        "pass": 7,
+        "fail": 2,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_args": {
+        "pass": 7,
+        "fail": 2,
+        "gap": 0,
+        "skip": 1
+      },
+      "oracle_content": {
+        "pass": 2,
+        "fail": 0,
+        "gap": 0,
+        "skip": 8
+      }
+    },
+    "splitcall-repair": {
+      "no_crash": {
+        "pass": 8902,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "stream_equals_batch": {
+        "pass": 8902,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "count": {
+        "pass": 8902,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "index_ordinal": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "index_stable": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "id_present": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "id_stable": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "args_json": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "finish_reason": {
+        "pass": 8902,
+        "fail": 0,
+        "gap": 0,
+        "skip": 0
+      },
+      "no_markup_leak": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "type_function": {
+        "pass": 6009,
+        "fail": 0,
+        "gap": 0,
+        "skip": 2893
+      },
+      "args_are_strings": {
+        "pass": 1238,
+        "fail": 0,
+        "gap": 0,
+        "skip": 7664
+      },
+      "oracle_names": {
+        "pass": 42,
+        "fail": 0,
+        "gap": 0,
+        "skip": 8
+      },
+      "oracle_args": {
+        "pass": 41,
+        "fail": 0,
+        "gap": 0,
+        "skip": 9
+      },
+      "oracle_content": {
+        "pass": 6,
+        "fail": 0,
+        "gap": 0,
+        "skip": 44
+      }
+    }
+  },
+  "repair_failures": 0,
+  "repros": [
+    {
+      "parser": "sglang-harmony",
+      "runtime": "sglang",
+      "format": "harmony",
+      "case_id": "harmony-basic",
+      "invariant": "count",
+      "detail": "1 batch vs 0 stream",
+      "split": "chunks:1",
+      "family": "chunks:1",
+      "text": "<|start|>assistant<|channel|>commentary to=functions.get_weather<|constrain|>json<|message|>{\"city\": \"Paris\"}<|call|>",
+      "shrunk": "<|start|>assistant<|channel|>commentaryto=fus.get_weather<|constrain|>json<|message|>{\"city\": \"Paris\"}<|call|>",
+      "batch": "finish=None content='' calls=[0:get_weather:{\"city\": \"Paris\"}]",
+      "stream": "finish=None content='<|start|>assistant<|channel|>commenta...' calls=[]"
+    },
+    {
+      "parser": "sglang-harmony",
+      "runtime": "sglang",
+      "format": "harmony",
+      "case_id": "harmony-basic",
+      "invariant": "stream_equals_batch",
+      "detail": "content '<|call|>' vs ''",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "<|start|>assistant<|channel|>commentary to=functions.get_weather<|constrain|>json<|message|>{\"city\": \"Paris\"}<|call|>",
+      "shrunk": "<|call|>",
+      "batch": "finish=None content='<|call|>' calls=[]",
+      "stream": "finish=None content='' calls=[]"
+    },
+    {
+      "parser": "sglang-hermes",
+      "runtime": "sglang",
+      "format": "hermes",
+      "case_id": "hermes-basic",
+      "invariant": "args_json",
+      "detail": "stream[0] ''",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "<tool_call>{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}</tool_call>",
+      "shrunk": "<tool_call>{\"name\":\"get_weather\"",
+      "batch": "finish=None content='<tool_call>{\"name\":\"get_weather\"' calls=[]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-hermes",
+      "runtime": "sglang",
+      "format": "hermes",
+      "case_id": "hermes-basic",
+      "invariant": "count",
+      "detail": "0 batch vs 1 stream",
+      "split": "trunc@32",
+      "family": "trunc",
+      "text": "<tool_call>{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}</tool_call>",
+      "shrunk": "<tool_call>{\"name\":\"get_weather\"",
+      "batch": "finish=None content='<tool_call>{\"name\":\"get_weather\"' calls=[]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-hermes",
+      "runtime": "sglang",
+      "format": "hermes",
+      "case_id": "hermes-basic",
+      "invariant": "index_ordinal",
+      "detail": "batch indices [1]",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "<tool_call>{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}</tool_call>",
+      "shrunk": "<tool_call>{\"name\":\"get_weather\", \"\": {\"cy\": \"P\"}}</tool_call>",
+      "batch": "finish=None content='' calls=[1:get_weather:{}]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-hermes",
+      "runtime": "sglang",
+      "format": "hermes",
+      "case_id": "hermes-basic",
+      "invariant": "stream_equals_batch",
+      "detail": "content '<' vs ''",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "<tool_call>{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}</tool_call>",
+      "shrunk": "<",
+      "batch": "finish=None content='<' calls=[]",
+      "stream": "finish=None content='' calls=[]"
+    },
+    {
+      "parser": "sglang-llama32",
+      "runtime": "sglang",
+      "format": "llama",
+      "case_id": "llama-bare",
+      "invariant": "args_json",
+      "detail": "stream[0] ''",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}",
+      "shrunk": "{\"name\":\"get_weather\"",
+      "batch": "finish=None content='{\"name\":\"get_weather\"' calls=[]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-llama32",
+      "runtime": "sglang",
+      "format": "llama",
+      "case_id": "llama-bare",
+      "invariant": "count",
+      "detail": "0 batch vs 1 stream",
+      "split": "trunc@21",
+      "family": "trunc",
+      "text": "{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}",
+      "shrunk": "{\"name\":\"get_weather\"",
+      "batch": "finish=None content='{\"name\":\"get_weather\"' calls=[]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-llama32",
+      "runtime": "sglang",
+      "format": "llama",
+      "case_id": "llama-bare",
+      "invariant": "index_ordinal",
+      "detail": "batch indices [1]",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}",
+      "shrunk": "{\"name\":\"get_weather\",\"\":\"Pa\"}}",
+      "batch": "finish=None content='' calls=[1:get_weather:{}]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-llama32",
+      "runtime": "sglang",
+      "format": "llama",
+      "case_id": "llama-bare",
+      "invariant": "stream_equals_batch",
+      "detail": "content '{' vs ''",
+      "split": "cut@0",
+      "family": "cut",
+      "text": "{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}",
+      "shrunk": "{",
+      "batch": "finish=None content='{' calls=[]",
+      "stream": "finish=None content='' calls=[]"
+    },
+    {
+      "parser": "sglang-mistral",
+      "runtime": "sglang",
+      "format": "mistral",
+      "case_id": "mistral-array",
+      "invariant": "args_json",
+      "detail": "stream[0] ''",
+      "split": "cut@35",
+      "family": "cut",
+      "text": "[TOOL_CALLS] [{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}]",
+      "shrunk": "[TOOL_CALLS] [{\"name\":\"get_weather\"\"a",
+      "batch": "finish=None content='' calls=[]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    },
+    {
+      "parser": "sglang-mistral",
+      "runtime": "sglang",
+      "format": "mistral",
+      "case_id": "mistral-array",
+      "invariant": "count",
+      "detail": "0 batch vs 1 stream",
+      "split": "trunc@35",
+      "family": "trunc",
+      "text": "[TOOL_CALLS] [{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}]",
+      "shrunk": "[TOOL_CALLS] [{\"name\":\"get_weather\"\"a",
+      "batch": "finish=None content='' calls=[]",
+      "stream": "finish=None content='' calls=[0:get_weather:]"
+    }
+  ],
+  "extra": [
+    {
+      "probe": "vllm-mistral-prev11-engine",
+      "text": "[TOOL_CALLS] [{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}]",
+      "engine_tools_called": false,
+      "engine_names": [],
+      "legacy_tools_called": true,
+      "legacy_names": [
+        "get_weather"
+      ]
+    }
+  ],
+  "limits": [
+    "Splits are Unicode code points, not UTF-8 bytes.",
+    "Splits are not real tokenizer boundaries. A marker that is one special token in production is still cut apart here.",
+    "Corpus strings are hand-written from published wire formats, not live model samples.",
+    "vLLM and SGLang are the parser classes, not their HTTP serving layers. finish_reason and, for SGLang, tool-call ids are filled in by serving code that is not imported.",
+    "The vLLM GptOss tool parser is an upstream stub and is not in the matrix. Harmony is the SGLang detector."
+  ]
+}
